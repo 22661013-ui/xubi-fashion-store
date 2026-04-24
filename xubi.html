@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XuBi Fashion Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* CSS để giả lập giao diện Material của Flutter */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Khung chứa app, giả lập màn hình điện thoại */
+        .app-container {
+            width: 100%;
+            max-width: 450px; /* Độ rộng tối đa để trông giống app mobile trên PC */
+            background-color: white;
+            min-height: 100vh;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* AppBar */
+        header {
+            background-color: white;
+            color: #333;
+            padding: 15px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .cart-icon {
+            font-size: 24px;
+            color: #555;
+            position: relative;
+        }
+
+        /* Badge thông báo số lượng trong giỏ */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #2196F3;
+            color: white;
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        /* Lưới sản phẩm (GridView) */
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 cột */
+            gap: 15px;
+            padding: 15px;
+            flex-grow: 1;
+        }
+
+        /* Card sản phẩm */
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: transform 0.2s;
+            border: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 180px; /* Chiều cao cố định cho ảnh */
+            object-fit: cover; /* Cắt ảnh cho vừa khung */
+        }
+
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .product-name {
+            font-weight: 600;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 6px;
+            height: 38px; /* Giới hạn 2 dòng */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+
+        .product-price {
+            color: #2196F3; /* Màu xanh giống Flutter theme */
+            font-weight: bold;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* Nút 'Thêm vào giỏ' (OutlinedButton) */
+        .add-btn {
+            background-color: white;
+            color: #2196F3;
+            border: 1px solid #2196F3;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background-color 0.2s;
+        }
+
+        .add-btn:hover {
+            background-color: #e3f2fd; /* Màu nền khi hover */
+        }
+
+        /* Footer đơn giản */
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #888;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div style="width: 24px;"></div> <h1>XuBi</h1>
+            <div class="cart-icon">
+                <i class="fa-solid fa-shopping-bag"></i>
+                <span class="cart-badge">3</span> </div>
+        </header>
+
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/632511979_3364849873667105_7250439103584063344_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=dd6889&_nc_ohc=rnCQosYKGqsQ7kNvwHOPVWo&_nc_oc=AdrspOn4lKrEe_FhLKh06HyCJOvH3OASfBMKh5_ug4wGJ1xTKJgd_yWdUBYCaunaWVY&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=Vtd9peQsBkd9UGMALf-GmA&oh=00_Af1GOwuUaOSFHy0sa9BS5fHnbe1hohtBDNXUTqYMuz5ACQ&oe=69F0B39F" alt="ĐỒ BỘ NGỦ">
+                <div class="product-info">
+                    <div>
+                        <div class="product-name">ĐỒ BỘ NGỦ ĐŨI BÔNG MÂY CAO CẤP</div>
+                        <div class="product-price">70.000đ</div>
+                    </div>
+                    <button class="add-btn" onclick="alert('Đã thêm vào giỏ!')">Thêm vào giỏ</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://scontent.fsgn5-6.fna.fbcdn.net/v/t39.30808-6/632487456_3364845303667562_1456560022038411141_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=111&ccb=1-7&_nc_sid=dd6889&_nc_ohc=ntlmUMR3u3IQ7kNvwFU3MAr&_nc_oc=AdqlPkEvXgv-Sl2hoZE3fVAAcggbvgbVNL4WTgqzLi5l6gQ8ItwpRy-oFGxZIHTu3js&_nc_zt=23&_nc_ht=scontent.fsgn5-6.fna&_nc_gid=6mHFso78Kxfs5mTwGYRO1Q&oh=00_Af3X_mMnx5IX36daVl1BgX1rH8UVA-VPE30OhDf-bYHy5g&oe=69F0A5D4" alt="ĐẦM LÔNG VŨ">
+                <div class="product-info">
+                    <div>
+                        <div class="product-name">ĐẦM LÔNG VŨ DÁNG DÀI</div>
+                        <div class="product-price">129.000đ</div>
+                    </div>
+                    <button class="add-btn" onclick="alert('Đã thêm vào giỏ!')">Thêm vào giỏ</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://scontent.fsgn5-10.fna.fbcdn.net/v/t39.30808-6/631650255_3364842487001177_2960229819798019226_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=107&ccb=1-7&_nc_sid=dd6889&_nc_ohc=jFt7t84Fx30Q7kNvwEvPg-j&_nc_oc=AdrCeRF7kIzDH3YLTSyAx7nrvBM15d9f1Prwpp72VsFrhTSCjJOUc2O4VRRbqJ0q4ek&_nc_zt=23&_nc_ht=scontent.fsgn5-10.fna&_nc_gid=6mHFso78Kxfs5mTwGYRO1Q&oh=00_Af2EXlamHzS-AQ5ohB84S-KuMNnJCUFipGWIrj0ZLUFqNA&oe=69F0B3D6" alt="ĐẦM BABY DOLL">
+                <div class="product-info">
+                    <div>
+                        <div class="product-name">ĐẦM BABY DOLL</div>
+                        <div class="product-price">89.000đ</div>
+                    </div>
+                    <button class="add-btn" onclick="alert('Đã thêm vào giỏ!')">Thêm vào giỏ</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://scontent.fsgn5-9.fna.fbcdn.net/v/t39.30808-6/634160415_3364839973668095_1686517506833750867_n.jpg?stp=dst-jpg_s590x590_tt6&_nc_cat=105&ccb=1-7&_nc_sid=dd6889&_nc_ohc=GYyuVF48AjwQ7kNvwG0aPtt&_nc_oc=AdrY60i2Bg3t1BillUBzavac8RxNsJGyuU2s5dhWl6n_TI8XvMgBuSdGWJcmN5F-UYM&_nc_zt=23&_nc_ht=scontent.fsgn5-9.fna&_nc_gid=iSzGtoqnK1x28QZ4rFQBsA&oh=00_Af22m93MFQBV9ZubKoAcVjSDU6BP0cX44OAbQd6TMSo7KQ&oe=69F09E0A" alt="ĐẦM BODY">
+                <div class="product-info">
+                    <div>
+                        <div class="product-name">ĐẦM BODY LEN CAO CẤP</div>
+                        <div class="product-price">105.000đ</div>
+                    </div>
+                    <button class="add-btn" onclick="alert('Đã thêm vào giỏ!')">Thêm vào giỏ</button>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © 2024 XuBi Fashion Store. Giao diện giả lập từ Flutter.
+        </footer>
+    </div>
+</body>
+</html>
